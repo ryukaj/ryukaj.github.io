@@ -1,4 +1,4 @@
-language: node_js
+ï»¿language: node_js
 node_js:
   - "10"
 
@@ -8,7 +8,7 @@ cache:
 
 branches:
   only:
-  - gh-pages // ‘ÎÛƒuƒ‰ƒ“ƒ`
+  - gh-pages // å¯¾è±¡ãƒ–ãƒ©ãƒ³ãƒ
 
 install:
   - npm install
@@ -20,8 +20,8 @@ script:
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: a4engiload// Travis CI‚ÌƒEƒFƒuƒy[ƒW‚Åİ’è‚µ‚½•Ï”
-  target-branch: master // ƒfƒvƒƒCæƒuƒ‰ƒ“ƒ`
-  local-dir: dist // ‘ÎÛƒfƒBƒŒƒNƒgƒŠ
+  github-token: a4engiload// Travis CIã®ã‚¦ã‚§ãƒ–ãƒšãƒ¼ã‚¸ã§è¨­å®šã—ãŸå¤‰æ•°
+  target-branch: master // ãƒ‡ãƒ—ãƒ­ã‚¤å…ˆãƒ–ãƒ©ãƒ³ãƒ
+  local-dir: dist // å¯¾è±¡ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
   on:
-    branch: gh-pages // ‘ÎÛƒuƒ‰ƒ“ƒ`
+    branch: gh-pages // å¯¾è±¡ãƒ–ãƒ©ãƒ³ãƒ
