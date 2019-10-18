@@ -70,6 +70,7 @@ typings/
 
 # Nuxt generate
 dist
+dist_*/
 
 # vuepress build output
 .vuepress/dist
@@ -88,3 +89,10 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# @nuxtjs/sitemap
+sitemap.xml
+sitemap.xml.gz
+
+# package-lock.json
+package-lock.json
