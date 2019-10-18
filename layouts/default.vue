@@ -11,16 +11,30 @@
           href="/"
         >
           <img
-            src="~assets/buefy.png"
+            src="~assets/toppage.png"
             alt="Buefy"
             height="28"
           >
         </a>
-
         <div class="navbar-burger">
           <span />
           <span />
           <span />
+        </div>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item">
+            <span>Prototype for A4 Project</span>
+          </div>
+        </div>
+        <div class="navbar-item">
+        <div class="navbar-end">
+            <div class="buttons">
+              <b-button @click="clickSignIn">Sign In</b-button>
+              <b-button @click="clickSignUp">Sign Up</b-button>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -54,6 +68,14 @@
 
 <script>
 export default {
+  methods: {
+    clickSignIn () {
+      this.$buefy.dialog.alert('ログインページへ遷移（作成中）')
+    },
+    clickSignUp () {
+      this.$buefy.dialog.alert('新規登録ページへ遷移（作成中）')
+    }
+  },
   data () {
     return {
       items: [
