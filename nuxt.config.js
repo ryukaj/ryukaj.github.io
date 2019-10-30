@@ -1,9 +1,8 @@
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'universal',
-  /*
-  ** Headers of the page
-  */
+  srcDir: 'src/',
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -15,50 +14,43 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
   css: [
+    '~/assets/css/bulma/core.scss'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
+    '~/plugins/vue/vue-scrollto',
+    '~/plugins/vue/vue-mq',
+    // '~/plugins/vue/vee-validate' 
+    // '~/plugins/vue/vue2-perfect-scrollbar',
+    // '~/plugins/vue/vue2-rellax',
+    { src: '~/plugins/vue/aos', ssr: false },
   ],
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module'
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
+    ['nuxt-buefy', { css: false }],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    ['@nuxtjs/pwa', { icon: false }],
+    '@nuxtjs/style-resources'
   ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
   axios: {
   },
-  /*
-  ** Build configuration
-  */
+  styleResources: {
+    sass: [
+      '~/assets/css/bulma/utilities.scss',
+    ]
+  },
   build: {
-    /*
-    ** You can extend webpack config here
-    */
+    plugins: [
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+      })
+    ],
     postcss : {
       plugin : {
         'postcss-preset-env': {

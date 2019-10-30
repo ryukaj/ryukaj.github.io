@@ -16,13 +16,13 @@
             height="28"
           >
         </a>
-        <div class="navbar-burger">
+        <div class="navbar-burger" data-target="a4-head-menu" v-bind:class="{ 'is-active': menuActive }" v-on:click="menuToggle()">
           <span />
           <span />
           <span />
         </div>
       </div>
-      <div class="navbar-menu">
+      <div id="a4-head-menu" class="navbar-menu" v-bind:class="{ 'is-active': menuActive }">
         <div class="navbar-start">
           <div class="navbar-item">
             <span>Prototype for A4 Project</span>
@@ -63,21 +63,34 @@
         <nuxt />
       </div>
     </section>
+    <b-modal :active.sync="isModalActive" has-modal-card>
+      <p v-if="modalType === 'signup'">Load Sign Up Conponnent</p>
+      <p v-else-if="modalType === 'signin'">Load Sign In Conponnent</p>
+    </b-modal>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
+    menuToggle () {
+      this.menuActive = !this.menuActive
+    },
     clickSignIn () {
-      this.$buefy.dialog.alert('ログインページへ遷移（作成中）')
+      this.isModalActive = true
+      this.modalType = 'signin'
     },
     clickSignUp () {
-      this.$buefy.dialog.alert('新規登録ページへ遷移（作成中）')
+      this.isModalActive = true
+      this.modalType = 'signup'
     }
   },
   data () {
     return {
+      menuActive: false,
+      /* モーダ処理関連 */
+      isModalActive: false,
+      modalType: '',
       items: [
         {
           title: 'Home',
@@ -87,7 +100,7 @@ export default {
         {
           title: 'Inspire',
           icon: 'lightbulb',
-          to: { name: 'inspire' }
+          to: { name: 'inspirse' }
         }
       ]
     }
