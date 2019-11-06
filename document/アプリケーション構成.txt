@@ -1,0 +1,12 @@
+Atomic Design Pattern
+src/
+ assets/ : 静的ファイル (CSSやImage)SPA
+ components/ : コンポーネント
+  applications/ :サービス全体のレイアウト
+  atoms/ : 部品
+ layouts/ : アプリ全体を構成するレイアウト
+  default.vue : 起点ファイル
+ pages/ : 各ページを表すコンポーネント
+  index.vue : Welcomeページ
+ plugins/ : プラグイン
+ static/ : assetsに含めたくない静的ファイル
