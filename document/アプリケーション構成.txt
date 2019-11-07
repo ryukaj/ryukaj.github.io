@@ -1,12 +1,60 @@
-Atomic Design Pattern
-src/
- assets/ : 静的ファイル (CSSやImage)SPA
- components/ : コンポーネント
-  applications/ :サービス全体のレイアウト
-  atoms/ : 部品
- layouts/ : アプリ全体を構成するレイアウト
-  default.vue : 起点ファイル
- pages/ : 各ページを表すコンポーネント
-  index.vue : Welcomeページ
- plugins/ : プラグイン
- static/ : assetsに含めたくない静的ファイル
+C:.
+│  nuxt.config.js : Nuxt.js設定ファイル
+│  package.json : アプリケーションが依存するパッケージ
+│
+├─document : モック開発時のメモ保管用ディレクトリ
+│
+├─server : 
+│      index.js
+│
+├─src
+│  ├─assets
+│  │  │  
+│  │  └─css
+│  │      └─bulma
+│  │
+│  ├─components : コンポーネントディレクトリ
+│  │  ├─applications
+│  │  ├─atoms
+│  │  ├─molecules
+│  │  ├─organisms
+│  │  └─pages
+│  │      └─register
+│  │
+│  ├─layouts : 全体レイアウトディレクトリ
+│  │      default.vue
+│  │      
+│  ├─middleware
+│  │      disable-direct-access.js
+│  │      
+│  ├─pages : 画面ディレクトリ (ルーティング) 
+│  │  │  index.vue
+│  │  │  
+│  │  └─register
+│  │      │  index.vue
+│  │      │  
+│  │      └─-form
+│  │              -advice.vue
+│  │              -area.vue
+│  │              -attribution.vue
+│  │              -career.vue
+│  │              -certification.vue
+│  │              -expected.vue
+│  │              -identification.vue
+│  │              -public-infomation.vue
+│  │              -registration.vue
+│  ├─plugins
+│  │  ├─a4
+│  │  │      autoloader.js
+│  │  └─vue
+│  │          aos.js
+│  │          vee-validate.js
+│  │          vue-mq.js
+│  │          vue-rellax.js
+│  │          vue-scrollto.js
+│  │          vue2-perfect-scrollbar.js
+│  └─static
+│          favicon.ico
+│          icon.png
+│          sw.js
+└─test
