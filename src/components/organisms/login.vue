@@ -2,10 +2,10 @@
 form
   Modal(title='A4 ログインフォーム')
     template(slot="m-content")
-      float-label
+      f-label
         input(type='email' placeholder='メールアドレス')
       br
-      float-label
+      f-label
         input(type='password' placeholder='パスワード')
     template(slot="m-footer")
       a.button(@click='closeComponent') キャンセル
