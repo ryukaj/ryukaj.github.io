@@ -30,8 +30,9 @@ module.exports = {
     // '~/plugins/vue/vee-validate' 
     // '~/plugins/vue/vue2-perfect-scrollbar',
     // '~/plugins/vue/vue2-rellax',
+    { src: '~/plugins/vue/vue-floating-label', ssr: false },
     { src: '~/plugins/vue/aos', ssr: false },
-    { src: '~plugins/a4/autoloader' },
+    '~plugins/a4/autoloader',
   ],
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module

@@ -11,8 +11,11 @@ div(:class='container')
 
 <script>
 export default {
-  props: [
-    'container'
-  ]
+  props: {
+    container: {
+      type: String,
+      default: ''
+    },
+  }
 }
 </script>

@@ -2,7 +2,7 @@
 div(:class='container')
   .navbar-item
     <!-- TODO: 仕様に合わせてログインコンポーネントを作成 -->
-    u-btn(text='sign in')
+    a.button(@click='loginComponent()') sign in
   .navbar-item
     nuxt-link.button(
       to='/register'
@@ -10,9 +10,24 @@ div(:class='container')
 </template>
 
 <script>
+import Login from '~/components/organisms/login'
 export default {
-  props: [
-    'container'
-  ]
+  components: {
+    Login
+  },
+  props: {
+    container: {
+      type: String,
+      default: ''
+    },
+  },
+  methods: {
+    loginComponent () {
+      this.$buefy.modal.open({
+        parent: this,
+        component: Login,
+      })
+    }
+  }
 }
 </script>

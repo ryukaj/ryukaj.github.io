@@ -1,11 +1,9 @@
 <template lang="pug">
 form
-  .modal-card
-    header.modal-card-head
-      div A4 ユーザ登録フォーム
-    section.modal-card-body
+  Modal(title='A4 ユーザ登録フォーム')
+    template(slot="m-content")
       component(:is="currentComponent" ref="form")
-    footer.modal-card-foot
+    template(slot="m-footer")
       a.button(@click="closeComponent") 閉じる
       a.button(v-if="3 <= currentPagenum && this.initial" @click="prevComponent") 戻る
       a.button(v-if="2 <= currentPagenum && currentPagenum < endpage && this.initial" @click="nextComponent") 次へ
@@ -14,6 +12,7 @@ form
 </template>
 
 <script>
+import Modal from '~/components/molecules/modal-container'
 /* 入力フォームコンポーネント */
 import Identification from '~/pages/register/-form/-identification'
 import Registration from '~/pages/register/-form/-registration'
@@ -26,6 +25,7 @@ import PublicInfomation from '~/pages/register/-form/-public-infomation'
 import Advice from '~/pages/register/-form/-advice'
 export default {
   components: {
+    Modal,
     Identification,
     Registration,
     Expected,

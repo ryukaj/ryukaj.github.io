@@ -33,6 +33,7 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^8.0.0",
     "vee-validate": "^3.0.11",
+    "vue-float-label": "^1.6.1",
     "vue-loaders": "^3.0.2",
     "vue-mq": "^1.0.1",
     "vue-rellax": "^0.1.0",
