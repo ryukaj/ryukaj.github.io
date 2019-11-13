@@ -1,7 +1,8 @@
 const webpack = require('webpack')
 
 // path
-const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+// const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+const baseUrl = 'https://ryukaj.github.io'
 const baseDir = process.env.BASE_DIR || '/'
 const basePath = baseUrl + baseDir
 
