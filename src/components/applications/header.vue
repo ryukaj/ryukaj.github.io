@@ -17,29 +17,39 @@
     .navbar-menu(
       :class="{ 'is-active': burgerActive}"
     )
-      h-menu(container='navbar-start')
-      h-sign(container='navbar-end')
+      h-navigation
+      component(:is="signComponent")
 </template>
 <!--
  check https://bulma.io/documentation/components/navbar/
 -->
 <script>
-import hMenu from '~/components/applications/header-menu'
-import hSign from '~/components/applications/header-sign'
+import hNavigation from '~/components/applications/header/navigation'
+import hGuest from '~/components/applications/header/guest'
+import hUser from '~/components/applications/header/user'
 export default {
   components: {
-    hMenu,
-    hSign
+    hNavigation,
+    hGuest,
+    hUser
   },
   data () {
     return {
       burgerActive: false
     }
   },
+  computed: {
+    signComponent () {
+      return (this.$auth.loggedIn) ? hUser : hGuest
+    },
+  },
   watch: {
     '$route.path' () {
       this.burgerActive = false
-    }
+    },
+    '$auth.loggedIn' () {
+      this.burgerActive = false
+    },
   },
   methods: {
     burgerToggle () {

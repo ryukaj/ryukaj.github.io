@@ -10,8 +10,11 @@ section.modal-card
 
 <script>
 export default {
-  props: [
-    'title'
-  ]
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+  },
 }
 </script>

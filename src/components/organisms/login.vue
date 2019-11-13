@@ -1,12 +1,12 @@
 <template lang="pug">
-form
+form(:model="form")
   Modal(title='A4 ログインフォーム')
     template(slot="m-content")
       f-label
-        input(type='email' placeholder='メールアドレス')
+        input(type='email' placeholder='メールアドレス' v-model="form.email")
       br
       f-label
-        input(type='password' placeholder='パスワード')
+        input(type='password' placeholder='パスワード' v-model="form.password")
     template(slot="m-footer")
       a.button(@click='closeComponent') キャンセル
       a.button(@click='login') 送信
@@ -18,13 +18,25 @@ export default {
   components: {
     Modal
   },
+  data () {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
   methods: {
     closeComponent () {
       this.$emit('close')
     },
-    login () {
-      // TODO: 入力チェック
-      alert('login機能実装待ち')
+    async login () {
+      try {
+        await this.$auth.loginWith('local', { data: this.form })
+        this.closeComponent()
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
@@ -32,4 +44,6 @@ export default {
 
 <!--
 Check: https://www.npmjs.com/package/vue-float-label
+       Auth Module
+       https://qiita.com/itouuuuuuuuu/items/1dc6401022e0d771c757
 -->

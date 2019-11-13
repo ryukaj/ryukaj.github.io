@@ -1,5 +1,10 @@
 const webpack = require('webpack')
 
+// path
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+const baseDir = process.env.BASE_DIR || '/'
+const basePath = baseUrl + baseDir
+
 module.exports = {
   mode: 'universal',
   srcDir: 'src/',
@@ -30,6 +35,7 @@ module.exports = {
     // '~/plugins/vue/vee-validate' 
     // '~/plugins/vue/vue2-perfect-scrollbar',
     // '~/plugins/vue/vue2-rellax',
+    // Doc: https://www.npmjs.com/package/vue-float-label
     { src: '~/plugins/vue/vue-floating-label', ssr: false },
     { src: '~/plugins/vue/aos', ssr: false },
     '~plugins/a4/autoloader',
@@ -44,9 +50,13 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     ['@nuxtjs/pwa', { icon: false }],
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    // Doc: https://auth.nuxtjs.org/#getting-started
+    '@nuxtjs/auth'
   ],
   axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+    browserBaseURL: basePath,
   },
   styleResources: {
     sass: [
@@ -67,6 +77,28 @@ module.exports = {
       },
     },
     extend (config, ctx) {
+    }
+  },
+  auth: {
+    redirect: {
+      // 要認証時画面に非ログインユーザがアクセスした場合
+      login: '/',
+      // ログアウト時のリダイレクト先
+      logout: '/',
+      // Oauth認証等で必要となる コールバックルート
+      callback: false,
+      // ログイン後のリダイレクト先
+      home: '/',
+    },
+    strategies: {
+      // 通常ログイン
+      local: {
+        endpoints: {
+          login: { url: 'stab/login', method: 'post', propertyName: 'token' },
+          user: { url: 'stab/user', method: 'get', propertyName: false },
+          logout: false
+        },
+      }
     }
   }
 }

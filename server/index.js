@@ -3,11 +3,16 @@ const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
+//ルート追加
+const stabRouter = require('./stab')
+
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
+  //ルート追加
+  app.use('/stab', stabRouter) 
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
