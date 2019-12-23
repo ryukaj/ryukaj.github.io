@@ -2,8 +2,8 @@
 form(:model="form")
   Modal(title='A4 ログインフォーム')
     template(slot="m-content")
-      f-label
-        input(type='email' placeholder='メールアドレス' v-model="form.email")
+      a4-f-input(title="メールアドレス")
+        input(type='email' v-model="form.email" slot="input")
       br
       f-label
         input(type='password' placeholder='パスワード' v-model="form.password")
@@ -30,14 +30,24 @@ export default {
     closeComponent () {
       this.$emit('close')
     },
+    // FIXME: Github-Pagesへデプロイ用スタブ処理
+    login () {
+      this.$auth.login({ data: this.form }).then(
+        () => this.closeComponent()
+      )
+    }
+    // NOTE: Github-PagesではExpressが動かないので一時、コメントアウト
+    /*
     async login () {
       try {
-        await this.$auth.loginWith('local', { data: this.form })
-        this.closeComponent()
+        await this.$auth.loginWith('local', { data: this.form }).then(
+          () => this.closeComponent()
+        )
       } catch (error) {
         console.log(error)
       }
     }
+    */
   }
 }
 </script>
